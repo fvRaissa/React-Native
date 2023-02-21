@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+
 export default StyleSheet.create({
     container:{
         flex: 1,
@@ -11,8 +12,26 @@ export default StyleSheet.create({
         backgroundColor:'transparent',
         
     },
+    operacao:{
+        fontSize:30,
+        fontFamily:'regular',
+        textAlign:'right',
+        marginBottom:'-20%',
+        marginTop:'30%'
+    },
     resultado:{
-        
+        fontSize:52,
+        fontFamily:'bold',
+        textAlign:'right',
+        marginTop:'26%',
+        marginBottom:'-20%'
+    },
+    ondas:{
+        backgroundColor:'transparent',
+        width:'100%',
+        height:'15%',
+        bottom:"-4%",
+        elevation:1
     },
     div2:{
         flex:2,
@@ -20,6 +39,7 @@ export default StyleSheet.create({
         height:'65%',
         flexDirection:'column'
     },
+
     linha1:{
         height:"14%",
         flexDirection:'row',
@@ -32,15 +52,41 @@ export default StyleSheet.create({
         marginTop:"2%",
         marginLeft:"1%"
     },
-    botao:{
+    botaoExpressao:{
         marginLeft:"2%",
         marginRight:"1%",
-        borderColor:'#000000',
+        borderColor:'#7FC3DC',
         borderWidth:'2px',
         borderRadius:15,
         width:"21.5%",
         height:"90%",
         alignItems:'center',
-    
+        
     },
+    botao:{
+        marginLeft:"2%",
+        marginRight:"1%",
+        borderColor: 'grey',
+        borderWidth:'2px',
+        borderRadius:15,
+        width:"21.5%",
+        height:"90%",
+        alignItems:'center',
+        
+        
+    },
+
+    txtBotaoL1:{
+        fontSize:33,
+        fontFamily:'regular',
+        textAlign:'center',
+        marginTop:"5%"
+     },
+
+    txtBotao:{
+       fontSize:33,
+       fontFamily:'regular',
+       textAlign:'center',
+       marginTop:"14%"
+    }
 })
