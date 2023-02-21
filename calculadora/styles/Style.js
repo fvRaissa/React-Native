@@ -16,6 +16,7 @@ export default StyleSheet.create({
         fontSize:30,
         fontFamily:'regular',
         textAlign:'right',
+        marginRight:'3%',
         marginBottom:'-20%',
         marginTop:'30%'
     },
@@ -23,6 +24,7 @@ export default StyleSheet.create({
         fontSize:52,
         fontFamily:'bold',
         textAlign:'right',
+        marginRight:'3%',
         marginTop:'26%',
         marginBottom:'-20%'
     },
