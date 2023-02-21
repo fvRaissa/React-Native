@@ -1,6 +1,13 @@
 import React,{useState} from 'react';
-import {Text,View,TextInput,StyleSheet, TouchableOpacity} from 'react-native';
+import {Text,View,TextInput,StyleSheet, TouchableOpacity,Image} from 'react-native';
 import Style from './styles/Style';
+import { useFonts } from 'expo-font'; //esse treco aqui vai importar as fontes que to usando
+
+//como usar outras fontes?
+//1-- usar esse cod no cmd ou terminl "npx expo install expo-font"
+//2-- baixar as fontes desejadas no google fonts e por aqui na pasta
+//3-- importar as fontes la em cima (4° linha de import)
+//5--criar uma const para carregar as fontes
 
 let estados={
   valorTela:'', /* valor digitado na tela para ser calculado*/
@@ -10,6 +17,13 @@ let estados={
 }
 
 export default function App(){
+
+  //const para carregar as fontes, só declarar o nome q quer usar e o endereço
+  const [fontsLoaded] = useFonts({
+    regular: require("./assets/fonts/WorkSans-Regular.ttf"),
+    light: require("./assets/fonts/WorkSans-Light.ttf"),
+    bold: require("./assets/fonts/WorkSans-SemiBold.ttf")
+  })
 
   const [valorTela, setValorTela] = useState(estados.valorTela)
   const [valorRes, setValorRes] = useState(estados.resultado)
@@ -95,10 +109,10 @@ export default function App(){
     //fundo
      <View style={Style.container}> 
      
-      {/* tela de resultado */}
+      {/* tela de operacao e resultado */}
       <View style={Style.div1}> 
-          <Text style={Style.resultado}
-            numberOfLines={1}>
+          <Text style={Style.operacao}
+            numberOfLines={2}>
               {valorTela}
           </Text>
 
@@ -106,83 +120,92 @@ export default function App(){
           numberOfLines={1}>
             {valorRes}
           </Text>
+
+      </View>
+
+      <View style={Style.ondas}>
+        <Image
+        style={{width:"107%", height:"100%",marginLeft:"-7%",marginBottom:"-25%",elevation: "10%",elevationColor:'black'}}
+        source={require('./assets/ondulado.png')}/>
       </View>
 
       {/* area dos botões */}
       <View style={Style.div2 }> {/*A div sera alinhada em colunas e as colunas em linhas*/} 
       
+        
+
         <View style={Style.linha1}> {/*linha dos botões */}
-          <TouchableOpacity style={Style.botao} onPress={()=>opera('AC')} > 
-            <Text>AC</Text>
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>opera('AC')} > 
+            <Text style={Style.txtBotaoL1} >AC</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={Style.botao} onPress={()=>adDigito('(')}> 
-            <Text>(</Text>
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>adDigito('(')}> 
+            <Text style={Style.txtBotaoL1} >(</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={Style.botao} onPress={()=>adDigito(')')}> 
-            <Text>)</Text>
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>adDigito(')')}> 
+            <Text style={Style.txtBotaoL1} >)</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={Style.botao} onPress={()=>adDigito('/')}> 
-            <Text>÷</Text>
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>adDigito('/')}> 
+            <Text style={Style.txtBotaoL1} >÷</Text>
           </TouchableOpacity>
         </View>
 
         <View style={Style.linha}> {/*linha dos botões */}
           <TouchableOpacity style={Style.botao} onPress={()=>adDigito('7')}> 
-            <Text>7</Text>
+            <Text style={Style.txtBotao} >7</Text>
           </TouchableOpacity>
           <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('8')}> 
-            <Text>8</Text>
+            <Text style={Style.txtBotao} >8</Text>
           </TouchableOpacity>
           <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('9')}> 
-            <Text>9</Text>
+            <Text style={Style.txtBotao} >9</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('*')}> 
-            <Text>X</Text>
+          <TouchableOpacity style={Style.botaoExpressao}  onPress={()=>adDigito('*')}> 
+            <Text style={Style.txtBotao} >x</Text>
           </TouchableOpacity>
         </View>
 
         <View style={Style.linha}> {/*linha dos botões */}
           <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('4')}> 
-            <Text>4</Text>
+            <Text style={Style.txtBotao} >4</Text>
           </TouchableOpacity>
           <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('5')}> 
-            <Text>5</Text>
+            <Text style={Style.txtBotao} >5</Text>
           </TouchableOpacity>
           <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('6')}> 
-            <Text>6</Text>
+            <Text style={Style.txtBotao} >6</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={Style.botao} onPress={()=>adDigito('-')}> 
-            <Text>-</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={Style.linha}> {/*linha do botões */}
-          <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('1')}> 
-            <Text>1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('2')}> 
-            <Text>2</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('3')}> 
-            <Text>3</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={Style.botao} onPress={()=>adDigito('+')}> 
-            <Text>+</Text>
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>adDigito('-')}> 
+            <Text style={Style.txtBotao} >-</Text>
           </TouchableOpacity>
         </View>
 
         <View style={Style.linha}> {/*linha dos botões */}
-          <TouchableOpacity style={Style.botao} onPress={()=>opera('BS')}> 
-            <Text>←</Text>
+          <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('1')}> 
+            <Text style={Style.txtBotao} >1</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('2')}> 
+            <Text style={Style.txtBotao} >2</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('3')}> 
+            <Text style={Style.txtBotao} >3</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>adDigito('+')}> 
+            <Text style={Style.txtBotao} >+</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={Style.linha}> {/*linha dos botões */}
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>opera('BS')}> 
+            <Text style={Style.txtBotao} >←</Text>
           </TouchableOpacity>
           <TouchableOpacity style={Style.botao}  onPress={()=>adDigito('0')}> 
-            <Text>0</Text >
+            <Text style={Style.txtBotao} >0</Text >
           </TouchableOpacity>
-          <TouchableOpacity style={Style.botao} onPress={()=>adDigito('.')}> 
-            <Text>.</Text>
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>adDigito('.')}> 
+            <Text style={Style.txtBotao} >.</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={Style.botao} onPress={()=>opera('=')}> 
-            <Text>=</Text>
+          <TouchableOpacity style={Style.botaoExpressao} onPress={()=>opera('=')}> 
+            <Text style={Style.txtBotao} >=</Text>
           </TouchableOpacity>
         </View>
 
