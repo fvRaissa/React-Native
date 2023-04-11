@@ -1,17 +1,19 @@
 import {View,StyleSheet, TouchableOpacity, Image, Text} from 'react-native';
-
+import casa from '../assets/casa.png'
+import logout from '../assets/logout.png'
 export default function Menu(){
+
     return(
           <View style={styles.subContainer2}>
             <TouchableOpacity style={styles.bnt}>
               <Image
-              source={require('../assets/casa.png')}
+              source={casa}
               style={styles.img}/>
             </TouchableOpacity>
   
             <TouchableOpacity style={styles.bnt}>
               <Image
-              source={require('../assets/logout')}
+              source={logout}
               style={styles.img}/>
             </TouchableOpacity>
 
